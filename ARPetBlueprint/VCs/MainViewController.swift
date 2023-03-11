@@ -1,0 +1,33 @@
+//
+//  ViewController.swift
+//  ARPetBlueprint
+//
+//  Created by 张思远 on 2023/3/8.
+//
+
+import UIKit
+
+class MainViewController: UIViewController {
+
+    override func viewWillAppear(_ animated: Bool) {
+        loadResource()
+    }
+    override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = true
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+//    override func viewWillAppear(_ animated: Bool) {
+//     super.viewWillAppear(animated)
+//     navigationController?.setNavigationBarHidden(true, animated: animated)
+//   }
+//
+//   override func viewWillDisappear(_ animated: Bool) {
+//     super.viewWillDisappear(animated)
+//     navigationController?.setNavigationBarHidden(false, animated: animated)
+//   }
+    
+    
+
+}
+
