@@ -7,11 +7,16 @@
 
 import UIKit
 
-class ForumVC: UIViewController {
+class ForumVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "PostTVC", bundle: nil), forCellReuseIdentifier: "PostTVC")
+
         // Do any additional setup after loading the view.
     }
     
@@ -36,5 +41,6 @@ class ForumVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }

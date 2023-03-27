@@ -11,9 +11,10 @@ class SelectPetVC: UIViewController {
 
     @IBAction func StartBtn(_ sender: Any) {
         let defaults = UserDefaults.standard
-        defaults.set(0, forKey: "isFirstLoad")
+        defaults.set(0, forKey: "myData_IsFirstLoad")
         defaults.synchronize()
         //确定宠物id
+        
         //此外，要把该用户的信息传到数据库
         
     }

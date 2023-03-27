@@ -15,6 +15,16 @@
 		870927BE29B8C41C00C2CA15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 870927BC29B8C41C00C2CA15 /* LaunchScreen.storyboard */; };
 		870927CA29B974C900C2CA15 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870927C929B974C900C2CA15 /* Task.swift */; };
 		870927D029B9760B00C2CA15 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 870927CF29B9760B00C2CA15 /* Alamofire */; };
+		871C03C229BD564600DE36D4 /* SpeechInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03C129BD564600DE36D4 /* SpeechInstructions.swift */; };
+		871C03C429BD585100DE36D4 /* PetID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03C329BD585100DE36D4 /* PetID.swift */; };
+		871C03C829BD5A2900DE36D4 /* PostTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03C629BD5A2900DE36D4 /* PostTVC.swift */; };
+		871C03C929BD5A2900DE36D4 /* PostTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 871C03C729BD5A2900DE36D4 /* PostTVC.xib */; };
+		871C03CB29BD5BCC00DE36D4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03CA29BD5BCC00DE36D4 /* Post.swift */; };
+		871C03CD29BD5D0200DE36D4 /* ForumVCEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03CC29BD5D0200DE36D4 /* ForumVCEx.swift */; };
+		871C03CF29BDC55000DE36D4 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 871C03CE29BDC29E00DE36D4 /* Experience.rcproject */; };
+		871C03F629BE18B300DE36D4 /* walkBtnStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03F529BE18B300DE36D4 /* walkBtnStatus.swift */; };
+		8755F08729C4141A0068E700 /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8755F08529C4141A0068E700 /* FoodCollectionViewCell.swift */; };
+		8755F08829C4141A0068E700 /* FoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */; };
 		87A3301B29B9788B00ED087A /* MainVCEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3301A29B9788B00ED087A /* MainVCEx.swift */; };
 		87A3301F29B97A0700ED087A /* TypeNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3301E29B97A0700ED087A /* TypeNameVC.swift */; };
 		87A3302129B9912200ED087A /* TypeNameEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3302029B9912200ED087A /* TypeNameEx.swift */; };
@@ -28,6 +38,8 @@
 		87A3303329B9F57A00ED087A /* TaskTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3303129B9F57A00ED087A /* TaskTVC.swift */; };
 		87A3303429B9F57A00ED087A /* TaskTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A3303229B9F57A00ED087A /* TaskTVC.xib */; };
 		87A3303629BAEA7C00ED087A /* TaskVCEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3303529BAEA7C00ED087A /* TaskVCEx.swift */; };
+		87A3303829BC207400ED087A /* HKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3303729BC207400ED087A /* HKModel.swift */; };
+		87A8F6AE29C553CE00AC535C /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8F6AD29C553CE00AC535C /* Food.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +53,17 @@
 		870927BF29B8C41C00C2CA15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		870927C929B974C900C2CA15 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		870927CD29B975DA00C2CA15 /* Alamofire-master */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "Alamofire-master"; path = "../../../../Downloads/Alamofire-master"; sourceTree = "<group>"; };
+		871C03C129BD564600DE36D4 /* SpeechInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechInstructions.swift; sourceTree = "<group>"; };
+		871C03C329BD585100DE36D4 /* PetID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetID.swift; sourceTree = "<group>"; };
+		871C03C629BD5A2900DE36D4 /* PostTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTVC.swift; sourceTree = "<group>"; };
+		871C03C729BD5A2900DE36D4 /* PostTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTVC.xib; sourceTree = "<group>"; };
+		871C03CA29BD5BCC00DE36D4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		871C03CC29BD5D0200DE36D4 /* ForumVCEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVCEx.swift; sourceTree = "<group>"; };
+		871C03CE29BDC29E00DE36D4 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		871C03F529BE18B300DE36D4 /* walkBtnStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walkBtnStatus.swift; sourceTree = "<group>"; };
+		8723309529CFCF9C00B5D8C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8755F08529C4141A0068E700 /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
+		8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCollectionViewCell.xib; sourceTree = "<group>"; };
 		87A3301A29B9788B00ED087A /* MainVCEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCEx.swift; sourceTree = "<group>"; };
 		87A3301E29B97A0700ED087A /* TypeNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameVC.swift; sourceTree = "<group>"; };
 		87A3302029B9912200ED087A /* TypeNameEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameEx.swift; sourceTree = "<group>"; };
@@ -54,6 +77,9 @@
 		87A3303129B9F57A00ED087A /* TaskTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTVC.swift; sourceTree = "<group>"; };
 		87A3303229B9F57A00ED087A /* TaskTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTVC.xib; sourceTree = "<group>"; };
 		87A3303529BAEA7C00ED087A /* TaskVCEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVCEx.swift; sourceTree = "<group>"; };
+		87A3303729BC207400ED087A /* HKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKModel.swift; sourceTree = "<group>"; };
+		87A3303929BC21BC00ED087A /* ARPetBlueprint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ARPetBlueprint.entitlements; sourceTree = "<group>"; };
+		87A8F6AD29C553CE00AC535C /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +115,8 @@
 		870927B029B8C41700C2CA15 /* ARPetBlueprint */ = {
 			isa = PBXGroup;
 			children = (
+				87A3303929BC21BC00ED087A /* ARPetBlueprint.entitlements */,
+				871C03C529BD59CE00DE36D4 /* Enum */,
 				87A3303029B9F54D00ED087A /* TableViewCell */,
 				87A3301929B9787100ED087A /* Extension */,
 				870927C829B974B200C2CA15 /* Delegate */,
@@ -97,6 +125,8 @@
 				870927C529B9748500C2CA15 /* VCs */,
 				870927BA29B8C41C00C2CA15 /* Assets.xcassets */,
 				870927BF29B8C41C00C2CA15 /* Info.plist */,
+				871C03CE29BDC29E00DE36D4 /* Experience.rcproject */,
+				8723309529CFCF9C00B5D8C6 /* README.md */,
 			);
 			path = ARPetBlueprint;
 			sourceTree = "<group>";
@@ -129,6 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				870927C929B974C900C2CA15 /* Task.swift */,
+				87A3303729BC207400ED087A /* HKModel.swift */,
+				871C03C129BD564600DE36D4 /* SpeechInstructions.swift */,
+				871C03CA29BD5BCC00DE36D4 /* Post.swift */,
+				87A8F6AD29C553CE00AC535C /* Food.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +191,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		871C03C529BD59CE00DE36D4 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				871C03C329BD585100DE36D4 /* PetID.swift */,
+				871C03F529BE18B300DE36D4 /* walkBtnStatus.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		87A3301929B9787100ED087A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +207,7 @@
 				87A3302029B9912200ED087A /* TypeNameEx.swift */,
 				87A3302E29B9EB6200ED087A /* navCEx.swift */,
 				87A3303529BAEA7C00ED087A /* TaskVCEx.swift */,
+				871C03CC29BD5D0200DE36D4 /* ForumVCEx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -173,6 +217,10 @@
 			children = (
 				87A3303129B9F57A00ED087A /* TaskTVC.swift */,
 				87A3303229B9F57A00ED087A /* TaskTVC.xib */,
+				871C03C629BD5A2900DE36D4 /* PostTVC.swift */,
+				871C03C729BD5A2900DE36D4 /* PostTVC.xib */,
+				8755F08529C4141A0068E700 /* FoodCollectionViewCell.swift */,
+				8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -238,7 +286,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8755F08829C4141A0068E700 /* FoodCollectionViewCell.xib in Resources */,
 				87A3303429B9F57A00ED087A /* TaskTVC.xib in Resources */,
+				871C03C929BD5A2900DE36D4 /* PostTVC.xib in Resources */,
 				870927BE29B8C41C00C2CA15 /* LaunchScreen.storyboard in Resources */,
 				870927BB29B8C41C00C2CA15 /* Assets.xcassets in Resources */,
 				870927B929B8C41700C2CA15 /* Main.storyboard in Resources */,
@@ -254,20 +304,30 @@
 			files = (
 				87A3302B29B9E7EE00ED087A /* SendPostVC.swift in Sources */,
 				87A3301B29B9788B00ED087A /* MainVCEx.swift in Sources */,
+				871C03C429BD585100DE36D4 /* PetID.swift in Sources */,
+				871C03C829BD5A2900DE36D4 /* PostTVC.swift in Sources */,
+				871C03CF29BDC55000DE36D4 /* Experience.rcproject in Sources */,
 				87A3303629BAEA7C00ED087A /* TaskVCEx.swift in Sources */,
 				87A3301F29B97A0700ED087A /* TypeNameVC.swift in Sources */,
 				870927CA29B974C900C2CA15 /* Task.swift in Sources */,
 				87A3302929B9E7D400ED087A /* ForumVC.swift in Sources */,
+				87A8F6AE29C553CE00AC535C /* Food.swift in Sources */,
 				87A3302729B9E78E00ED087A /* TaskVC.swift in Sources */,
+				8755F08729C4141A0068E700 /* FoodCollectionViewCell.swift in Sources */,
+				871C03CD29BD5D0200DE36D4 /* ForumVCEx.swift in Sources */,
 				87A3303329B9F57A00ED087A /* TaskTVC.swift in Sources */,
 				87A3302F29B9EB6200ED087A /* navCEx.swift in Sources */,
+				871C03F629BE18B300DE36D4 /* walkBtnStatus.swift in Sources */,
 				870927B629B8C41700C2CA15 /* MainViewController.swift in Sources */,
+				871C03CB29BD5BCC00DE36D4 /* Post.swift in Sources */,
 				870927B229B8C41700C2CA15 /* AppDelegate.swift in Sources */,
 				87A3302529B9E40A00ED087A /* ChooseImageVC.swift in Sources */,
 				87A3302129B9912200ED087A /* TypeNameEx.swift in Sources */,
+				871C03C229BD564600DE36D4 /* SpeechInstructions.swift in Sources */,
 				87A3302329B9931200ED087A /* SelectPetVC.swift in Sources */,
 				870927B429B8C41700C2CA15 /* SceneDelegate.swift in Sources */,
 				87A3302D29B9E8C900ED087A /* navC.swift in Sources */,
+				87A3303829BC207400ED087A /* HKModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +472,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ARPetBlueprint/ARPetBlueprint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F4W9ML742T;
@@ -427,6 +488,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CyanZhang.ARPetBlueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -440,6 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ARPetBlueprint/ARPetBlueprint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F4W9ML742T;
@@ -455,6 +518,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CyanZhang.ARPetBlueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

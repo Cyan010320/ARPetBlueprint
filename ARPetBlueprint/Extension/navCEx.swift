@@ -16,7 +16,7 @@ extension navC{
 //            return true
 //            //回到willAppear，切换
 //        }
-        if let isFirstLoad = defaults.object(forKey: "isFirstLoad") {
+        if let isFirstLoad = defaults.object(forKey: "myData_IsFirstLoad") {
             print("isFirstLoad: \(isFirstLoad)")
             if isFirstLoad as! Int == 0{
                 return false
@@ -24,7 +24,7 @@ extension navC{
                 return true
             }
         }
-        
+        defaults.set(1, forKey: "myData_IsFirstLoad")
         return true
     }
 }

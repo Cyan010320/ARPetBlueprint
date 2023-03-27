@@ -16,23 +16,23 @@ extension TaskVC{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTVC", for: indexPath) as! TaskTVC
         //let task = tasks![indexPath.row]
-        //需要每天第一次查看时刷新，而不死点进去就刷新。
-//        getDailyTasks("1") { tasks in
-//            if let tasks = tasks {
-//                print("indexpath.row:\(indexPath.row)")
-//                let task = tasks[indexPath.row]
-//                cell.taskDescription.text = task.taskDescription
-//                cell.taskAward.text = "奖励：" + task.taskAward!
-//            } else {
-//                print("error!")
-//            }
-//        }
+        //需要每天第一次查看时刷新，而不点进去就刷新。
+        getDailyTasks("1") { tasks in
+            if let tasks = tasks {
+                print("indexpath.row:\(indexPath.row)")
+                let task = tasks[indexPath.row]
+                cell.taskDescription.text = task.taskDescription
+                cell.taskAward.text = "奖励：" + task.taskAward!
+            } else {
+                print("error!")
+            }
+        }
         //这是第二种
         //获取今天的第indexPath.row个任务
-        let task = dailyTasks[0]
+        //let task = dailyTasks[0]
         //这是第二种
-        cell.taskDescription.text = task.taskDescription
-        cell.taskAward.text = "奖励：" + task.taskAward!
+//        cell.taskDescription.text = task.taskDescription
+//        cell.taskAward.text = "奖励：" + task.taskAward!
         return cell
     }
     

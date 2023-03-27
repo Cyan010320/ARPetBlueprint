@@ -10,11 +10,8 @@ import UIKit
 class TypeNameVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
+    
     override func viewDidAppear(_ animated: Bool) {
-
-        
-        
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,9 +15,26 @@ class navC: UINavigationController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+//    override func viewDidAppear(_ animated: Bool) {
+//        if !checkIfFirstLoad() {
+//            super.viewDidAppear(animated)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            if let newViewController = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController {
+//                self.pushViewController(newViewController, animated: false)
+//                //self.navigationController?.pushViewController(newViewController, animated: false)
+//            }
+//
+//        }
+//    }
+    
+    override func loadView() {
+        
+        //去掉这句话，直接崩溃，不知道为啥
+        UserDefaults.standard.set(0, forKey: "myData_IsFirstLoad")
+        
+        
         if !checkIfFirstLoad() {
-            super.viewDidAppear(animated)
+            super.loadView()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let newViewController = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController {
                 self.pushViewController(newViewController, animated: false)

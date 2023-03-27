@@ -16,7 +16,7 @@ extension TypeNameVC{
 //            return true
 //            //回到willAppear，切换
 //        }
-        if let isFirstLoad = defaults.object(forKey: "isFirstLoad") {
+        if let isFirstLoad = defaults.object(forKey: "myData_IsFirstLoad") {
             if isFirstLoad as! Int == 0{
                 return false
             } else{
