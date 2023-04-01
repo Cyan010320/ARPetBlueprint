@@ -16,10 +16,8 @@ extension MainViewController{
     func loadResource(){
         //加载初始变量
         
-        
-        
-        
     }
+    
     func getAllUIs() -> [UIView]{
         let UIs: [UIView] = [foodIcon, foodBackgroundBar, foodMask, heartIcon, heartBackgroundBar, heartMask, forumBtn, teaseBtn, taskBtn, feedBtn, chatBtn, walkBtn, speechText]
         return UIs
@@ -37,6 +35,45 @@ extension MainViewController{
         
         foodMask.layer.cornerRadius = 20
         heartMask.layer.cornerRadius = 20
+        
+        
+        if UserDefaults.standard.object(forKey: "myData_LastFoodValue") != nil {
+            // The key exists in UserDefaults
+            //print("哈哈哈")
+            let lastFoodValue = UserDefaults.standard.object(forKey: "myData_LastFoodValue") as! Float
+            
+            foodValue = getBarValue(value: lastFoodValue)
+            UserDefaults.standard.set(foodValue, forKey: "myData_LastFoodValue")
+
+        } else {
+            // The key does not exist in UserDefaults
+            
+            foodValue = 30
+            UserDefaults.standard.set(30, forKey: "myData_LastFoodValue")
+        }
+        
+        print("生命值：\(foodValue)")
+        DrawFoodBar(for: foodValue)
+        
+        
+        if UserDefaults.standard.object(forKey: "myData_LastHappyValue") != nil {
+            // The key exists in UserDefaults
+            //print("哈哈哈")
+            let lastFoodValue = UserDefaults.standard.object(forKey: "myData_LastHappyValue") as! Float
+            
+            happyValue = getBarValue(value: happyValue)
+            UserDefaults.standard.set(happyValue, forKey: "myData_LastHappyValue")
+
+        } else {
+            // The key does not exist in UserDefaults
+            
+            happyValue = 30
+            UserDefaults.standard.set(30, forKey: "myData_LastHappyValue")
+        }
+        
+        DrawHappyBar(for: happyValue)
+
+        closeBagBtn.isHidden = true
     }
     
     func startRecording() throws{
@@ -104,7 +141,9 @@ extension MainViewController{
         
     }
     
-    func updateBloodValue(value bloodNow: Float) -> Float{
+    
+    //由上次更新的值-秒*系数
+    func getBarValue(value bloodNow: Float, _ coefficient: Float = 0.002) -> Float{
         if let storedLocalTime = UserDefaults.standard.object(forKey: "myData_LocalTimeKey") as? Date {
             // Compare with current time
             let currentTime = Date()
@@ -112,14 +151,17 @@ extension MainViewController{
             let secondsBetween = Int(timeDifference.rounded())
 
             print("Seconds between local time (\(storedLocalTime)) and current time (\(currentTime)): \(secondsBetween)")
-            var blood = bloodNow - Float(secondsBetween) * 0.002
+            var blood = bloodNow - Float(secondsBetween) * coefficient
             if(blood < 0){blood=0}
+            if(blood > 100){blood=100}
             UserDefaults.standard.set(Date(), forKey: "myData_LocalTimeKey")
             return blood
         }
         UserDefaults.standard.set(Date(), forKey: "myData_LocalTimeKey")
-        return 30
+        return 30.0
     }
+    
+
     //
    
     @objc func leftSwipe() {
@@ -157,30 +199,6 @@ extension MainViewController{
         }
         
     }
-    
-//    @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
-//        let translation = gestureRecognizer.translation(in: bagView)
-//        let velocity = gestureRecognizer.velocity(in: bagView)
-//
-//        if gestureRecognizer.state == .changed {
-//            bagView.contentOffset.x -= translation.x
-//        } else if gestureRecognizer.state == .ended {
-//            let swipeVelocityThreshold: CGFloat = 1500
-//            if velocity.x > swipeVelocityThreshold {
-//                // User swiped right
-//            } else if velocity.x < -swipeVelocityThreshold {
-//                // User swiped left
-//            } else {
-//                // User did not swipe fast enough, return scroll view to original position
-//                UIView.animate(withDuration: 0.2) {
-//                    self.bagView.contentOffset.x = 0
-//                }
-//            }
-//        }
-//
-//        gestureRecognizer.setTranslation(CGPoint.zero, in: bagView)
-//    }
-
     
 }
 
@@ -270,32 +288,6 @@ extension MainViewController{
     }
 
 
-//    func sendRequest(userID: String, completion: @escaping ([Food]) -> Void) {
-//        let urlString = "http://123.249.97.150:8008/getBag.php?userID=\(userID)"
-//        AF.request(urlString).responseJSON { response in
-//            switch response.result {
-//            case .success(let value):
-//                if let json = value as? [String: Any], let foodsJSON = json["foods"] as? [[String: Any]] {
-//                    let foods = foodsJSON.compactMap { foodJSON in
-//                        guard let foodID = foodJSON["foodID"] as? Int,
-//                              let foodAmount = foodJSON["foodAmount"] as? Int,
-//                              let foodName = foodJSON["foodName"] as? String else {
-//                                  return nil
-//                        }
-//                        return Food(id: foodID, name: foodName, amount: foodAmount)
-//                    }
-//                    completion(foods)
-//                } else {
-//                    completion([])
-//                }
-//            case .failure(let error):
-//                print("Error: \(error)")
-//                completion([])
-//            }
-//        }
-//    }
-//
-//
     func DrawFoodBar(for foodValue: Float) {
         print("foodValue: \(foodValue)")
         let percentage = foodValue / 100.0
@@ -312,6 +304,69 @@ extension MainViewController{
         
     }
 
+    func DrawHappyBar(for happyValue: Float) {
+        //print("foodValue: \(foodValue)")
+        let percentage = happyValue / 100.0
+        let fillWidth = CGFloat(percentage) * 340
+        
+        // Set the frame of the fill UIImageView to reflect the fill percentage
+        UIView.animate(withDuration: 0.2) {
+            self.heartMask.frame = CGRect(
+                x: self.heartBackgroundBar.frame.minX,
+                y: self.heartBackgroundBar.frame.minY,
+                width: fillWidth,
+                height: 40)
+        }
+        
+    }
     
+}
+
+
+//任务初始化，数组为isTaskFinished
+extension MainViewController{
+    func InitTaskState(){
+        if let savedDate = UserDefaults.standard.object(forKey: "myData_LocalTimeKey") as? Date {
+            let calendar = Calendar.current
+            let savedDateComponents = calendar.dateComponents([.year, .month, .day], from: savedDate)
+            let todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+            
+            if savedDateComponents.year == todayComponents.year &&
+                savedDateComponents.month == todayComponents.month &&
+                savedDateComponents.day == todayComponents.day {
+                //判断上次登录是否为今天,若是，从UD中加载状态数组。
+                if let taskState = UserDefaults.standard.object(forKey: "myData_TaskState") as? Data,
+                   let rewardState = UserDefaults.standard.object(forKey: "myData_RewardState") as? Data{
+                    // Convert the data object back to a boolean array using NSKeyedUnarchiver
+                    if let taskStateArray = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(taskState) as? [Bool],
+                       let rewardStateArray = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(rewardState) as? [Bool]{
+                        // Use the boolean array as needed
+                        isTaskFinished = taskStateArray
+                        isRewardReceived = rewardStateArray
+                    }
+                }
+
+            } else {
+                //如果上次登录是昨天，此时需要且仅需要刷新任务完成状态，因为任务id在php中由种子刷新
+                isTaskFinished = Array(repeating: false, count: 4)
+                isRewardReceived = Array(repeating: true, count: 4)
+                if let taskState = try? NSKeyedArchiver.archivedData(withRootObject: isTaskFinished, requiringSecureCoding: false), let rewardState = try? NSKeyedArchiver.archivedData(withRootObject: isRewardReceived, requiringSecureCoding: false) {
+                    // Store the Data object in UserDefaults using the set(_:forKey:) method
+                    
+                    UserDefaults.standard.set(taskState, forKey: "myData_TaskState")
+                    UserDefaults.standard.set(rewardState, forKey: "myData_RewardState")
+                    
+                }
+                
+                
+                print("myData_LocalTimeKey is not today")
+            }
+        } else {
+            print("myData_LocalTimeKey not found in UserDefaults")
+        }
+
+        
+        return
+    }
     
 }

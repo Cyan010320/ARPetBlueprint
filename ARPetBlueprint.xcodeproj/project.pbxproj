@@ -22,9 +22,11 @@
 		871C03CB29BD5BCC00DE36D4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03CA29BD5BCC00DE36D4 /* Post.swift */; };
 		871C03CD29BD5D0200DE36D4 /* ForumVCEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03CC29BD5D0200DE36D4 /* ForumVCEx.swift */; };
 		871C03CF29BDC55000DE36D4 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 871C03CE29BDC29E00DE36D4 /* Experience.rcproject */; };
-		871C03F629BE18B300DE36D4 /* walkBtnStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03F529BE18B300DE36D4 /* walkBtnStatus.swift */; };
+		871C03F629BE18B300DE36D4 /* WalkBtnStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C03F529BE18B300DE36D4 /* WalkBtnStatus.swift */; };
 		8755F08729C4141A0068E700 /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8755F08529C4141A0068E700 /* FoodCollectionViewCell.swift */; };
 		8755F08829C4141A0068E700 /* FoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */; };
+		878D3EA629D8211B00D9A7FA /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EA529D8211B00D9A7FA /* global.swift */; };
+		878D3EA829D822B900D9A7FA /* TaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EA729D822B900D9A7FA /* TaskType.swift */; };
 		87A3301B29B9788B00ED087A /* MainVCEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3301A29B9788B00ED087A /* MainVCEx.swift */; };
 		87A3301F29B97A0700ED087A /* TypeNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3301E29B97A0700ED087A /* TypeNameVC.swift */; };
 		87A3302129B9912200ED087A /* TypeNameEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3302029B9912200ED087A /* TypeNameEx.swift */; };
@@ -40,6 +42,7 @@
 		87A3303629BAEA7C00ED087A /* TaskVCEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3303529BAEA7C00ED087A /* TaskVCEx.swift */; };
 		87A3303829BC207400ED087A /* HKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3303729BC207400ED087A /* HKModel.swift */; };
 		87A8F6AE29C553CE00AC535C /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8F6AD29C553CE00AC535C /* Food.swift */; };
+		87C8827E29D1EA210037A9DA /* Anyway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C8827D29D1EA210037A9DA /* Anyway.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,10 +63,12 @@
 		871C03CA29BD5BCC00DE36D4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		871C03CC29BD5D0200DE36D4 /* ForumVCEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVCEx.swift; sourceTree = "<group>"; };
 		871C03CE29BDC29E00DE36D4 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
-		871C03F529BE18B300DE36D4 /* walkBtnStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walkBtnStatus.swift; sourceTree = "<group>"; };
+		871C03F529BE18B300DE36D4 /* WalkBtnStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkBtnStatus.swift; sourceTree = "<group>"; };
 		8723309529CFCF9C00B5D8C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8755F08529C4141A0068E700 /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCollectionViewCell.xib; sourceTree = "<group>"; };
+		878D3EA529D8211B00D9A7FA /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		878D3EA729D822B900D9A7FA /* TaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskType.swift; sourceTree = "<group>"; };
 		87A3301A29B9788B00ED087A /* MainVCEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCEx.swift; sourceTree = "<group>"; };
 		87A3301E29B97A0700ED087A /* TypeNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameVC.swift; sourceTree = "<group>"; };
 		87A3302029B9912200ED087A /* TypeNameEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameEx.swift; sourceTree = "<group>"; };
@@ -80,6 +85,8 @@
 		87A3303729BC207400ED087A /* HKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKModel.swift; sourceTree = "<group>"; };
 		87A3303929BC21BC00ED087A /* ARPetBlueprint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ARPetBlueprint.entitlements; sourceTree = "<group>"; };
 		87A8F6AD29C553CE00AC535C /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		87C8827C29D1E9B40037A9DA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		87C8827D29D1EA210037A9DA /* Anyway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anyway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				87A3303929BC21BC00ED087A /* ARPetBlueprint.entitlements */,
+				878D3EA429D8210100D9A7FA /* GlobalFunc */,
+				87C8827B29D1E98D0037A9DA /* StateMachine */,
 				871C03C529BD59CE00DE36D4 /* Enum */,
 				87A3303029B9F54D00ED087A /* TableViewCell */,
 				87A3301929B9787100ED087A /* Extension */,
@@ -195,9 +204,18 @@
 			isa = PBXGroup;
 			children = (
 				871C03C329BD585100DE36D4 /* PetID.swift */,
-				871C03F529BE18B300DE36D4 /* walkBtnStatus.swift */,
+				871C03F529BE18B300DE36D4 /* WalkBtnStatus.swift */,
+				878D3EA729D822B900D9A7FA /* TaskType.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		878D3EA429D8210100D9A7FA /* GlobalFunc */ = {
+			isa = PBXGroup;
+			children = (
+				878D3EA529D8211B00D9A7FA /* global.swift */,
+			);
+			path = GlobalFunc;
 			sourceTree = "<group>";
 		};
 		87A3301929B9787100ED087A /* Extension */ = {
@@ -223,6 +241,15 @@
 				8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		87C8827B29D1E98D0037A9DA /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				87C8827C29D1E9B40037A9DA /* README.md */,
+				87C8827D29D1EA210037A9DA /* Anyway.swift */,
+			);
+			path = StateMachine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +329,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878D3EA829D822B900D9A7FA /* TaskType.swift in Sources */,
+				878D3EA629D8211B00D9A7FA /* global.swift in Sources */,
 				87A3302B29B9E7EE00ED087A /* SendPostVC.swift in Sources */,
 				87A3301B29B9788B00ED087A /* MainVCEx.swift in Sources */,
 				871C03C429BD585100DE36D4 /* PetID.swift in Sources */,
@@ -317,9 +346,10 @@
 				871C03CD29BD5D0200DE36D4 /* ForumVCEx.swift in Sources */,
 				87A3303329B9F57A00ED087A /* TaskTVC.swift in Sources */,
 				87A3302F29B9EB6200ED087A /* navCEx.swift in Sources */,
-				871C03F629BE18B300DE36D4 /* walkBtnStatus.swift in Sources */,
+				871C03F629BE18B300DE36D4 /* WalkBtnStatus.swift in Sources */,
 				870927B629B8C41700C2CA15 /* MainViewController.swift in Sources */,
 				871C03CB29BD5BCC00DE36D4 /* Post.swift in Sources */,
+				87C8827E29D1EA210037A9DA /* Anyway.swift in Sources */,
 				870927B229B8C41700C2CA15 /* AppDelegate.swift in Sources */,
 				87A3302529B9E40A00ED087A /* ChooseImageVC.swift in Sources */,
 				87A3302129B9912200ED087A /* TypeNameEx.swift in Sources */,

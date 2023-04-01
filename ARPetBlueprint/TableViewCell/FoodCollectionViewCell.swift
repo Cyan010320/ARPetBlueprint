@@ -23,7 +23,7 @@ class FoodCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
     var delegate: FeedCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        let touchUpInside = UITapGestureRecognizer(target: self, action: #selector(feed))
+        let touchUpInside = UITapGestureRecognizer(target: self, action: #selector(Feed))
         touchUpInside.delegate = self
         self.addGestureRecognizer(touchUpInside)
         
@@ -39,7 +39,7 @@ class FoodCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
         "6": 15
     ]
     
-    @objc func feed(_ sender: UIGestureRecognizer){
+    @objc func Feed(_ sender: UIGestureRecognizer){
         //首先，给宠物回血
         print("点击")
         //self.superview?.superview.
@@ -70,6 +70,17 @@ class FoodCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
         
         self.amountLabel.text = "x\(foodInCell!.foodAmount)"
         delegate?.UpdateFoodBar(for: self.foodInCell!.foodID)
+        
+        //然后，判断任务是否完成
+        SetTaskToFinish(TaskType.Feed)
+//
+//        if isInTask && isUnfinished{
+//            //将完成置为true
+//
+//
+//
+//        }
+        
         
         //之后，更新数据库
         func decrementAmount(_ amount: String) -> String? {

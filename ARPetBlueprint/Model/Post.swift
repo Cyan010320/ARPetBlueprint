@@ -20,7 +20,7 @@ struct Post: Codable{
 }
 
 
-public let postsPerPage: Int = 20
+
 
 func getPosts(pages: Int, completion: @escaping (Result<[Post], Error>) -> Void) {
     let url = "http://123.249.97.150:8008/pullPosts.php?pages=\(pages)"

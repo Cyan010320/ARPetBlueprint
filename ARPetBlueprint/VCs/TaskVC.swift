@@ -7,11 +7,11 @@
 
 import UIKit
 
-let dailyTaskNumber = 4
+
 
 class TaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    var dailyTasks: [Task] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,18 +19,13 @@ class TaskVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         self.navigationController?.isNavigationBarHidden = false
         tableView.register(UINib(nibName: "TaskTVC", bundle: nil), forCellReuseIdentifier: "TaskTVC")
-        print("怎么事")
 
 
         //这里之后要改，先设为1，后期从UserDefaults中取。
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        getDailyTasks("1") { tasks in
-            if let tasks = tasks {
-                self.dailyTasks = tasks
-            } else {print("没任务")}
-        }
+
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
         
         
         // Do any additional setup after loading the view.

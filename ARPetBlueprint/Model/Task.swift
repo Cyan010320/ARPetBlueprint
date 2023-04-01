@@ -15,14 +15,18 @@ struct Task: Codable {
     let petID: String
 }
 
-func getDailyTasks(_ petID: String, completion: @escaping ([Task]?) -> Void){
-    //print("调用tasks")
-    
-    AF.request("http://123.249.97.150:8008/getTask.php?petID="+petID).responseJSON { response in
+struct TodayTask {
+    var taskID: String
+    var isFinished: Bool
+}
+
+
+
+func GetDailyTasks(_ petID: String, completion: @escaping ([Task]?) -> Void){
+    AF.request("http://123.249.97.150:8008/getTaskBySeed.php?petID="+petID).responseJSON { response in
         switch response.result {
         case .success(let data):
             do {
-                print("???")
                 let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
                 let decoder = JSONDecoder()
                 let tasks = try decoder.decode([Task].self, from: jsonData)

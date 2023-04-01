@@ -15,24 +15,33 @@ extension TaskVC{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTVC", for: indexPath) as! TaskTVC
-        //let task = tasks![indexPath.row]
         //需要每天第一次查看时刷新，而不点进去就刷新。
-        getDailyTasks("1") { tasks in
-            if let tasks = tasks {
-                print("indexpath.row:\(indexPath.row)")
-                let task = tasks[indexPath.row]
-                cell.taskDescription.text = task.taskDescription
-                cell.taskAward.text = "奖励：" + task.taskAward!
-            } else {
-                print("error!")
-            }
+
+        let task = dailyTasks[indexPath.row]
+        let row = indexPath.row
+        if isTaskFinished[row] && isRewardReceived[row] {
+            //完成且领完奖励
+            cell.taskProgress.text = "进度：1/1"
+            cell.taskFinishBtn.backgroundColor = .gray
+            cell.taskFinishBtn.tintColor = .blue
+            cell.taskFinishBtn.titleLabel?.text = "已完成"
+            
         }
-        //这是第二种
-        //获取今天的第indexPath.row个任务
-        //let task = dailyTasks[0]
-        //这是第二种
-//        cell.taskDescription.text = task.taskDescription
-//        cell.taskAward.text = "奖励：" + task.taskAward!
+        else if isTaskFinished[row] && !isRewardReceived[row] {
+            //完成且没领奖励
+            cell.taskProgress.text = "进度：1/1"
+            cell.taskFinishBtn.backgroundColor = .blue
+            cell.taskFinishBtn.tintColor = .white
+            cell.taskFinishBtn.titleLabel?.text = "领取"
+            
+        }
+        else{
+            //未完成
+            
+        }
+        cell.taskDescription.text = task.taskDescription
+        cell.taskAward.text = "奖励：" + task.taskAward!
+        //}
         return cell
     }
     
@@ -40,7 +49,4 @@ extension TaskVC{
         return 133
     }
 
-    
-    
-    
 }

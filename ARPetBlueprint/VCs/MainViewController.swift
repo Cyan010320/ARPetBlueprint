@@ -15,10 +15,8 @@ import Alamofire
 class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeechRecognizerDelegate, UIScrollViewDelegate, FeedCellDelegate {
 
     
-
-    
     var foodValue:  Float = 0
-    var happyValue: Int = 0
+    var happyValue: Float = 0
     var isHidingUI = false
     let hpLength = 340
     
@@ -37,6 +35,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
     var foods: [Food] = []
     
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         loadResource()
         //关闭了文本栏
@@ -50,27 +50,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         initUI()
-        if UserDefaults.standard.object(forKey: "myData_LastFoodValue") != nil {
-            // The key exists in UserDefaults
-            //print("哈哈哈")
-            let lastFoodValue = UserDefaults.standard.object(forKey: "myData_LastFoodValue") as! Float
-            
-            foodValue = updateBloodValue(value: lastFoodValue)
-            UserDefaults.standard.set(foodValue, forKey: "myData_LastFoodValue")
-
-        } else {
-            // The key does not exist in UserDefaults
-            
-            foodValue = 30
-            UserDefaults.standard.set(30, forKey: "myData_LastFoodValue")
-        }
-        print("生命值：\(foodValue)")
-        DrawFoodBar(for: foodValue)
         
-        closeBagBtn.isHidden = true
+        //加载AR场景
         let boxAnchor = try! Experience.loadBox()
         arView.scene.anchors.append(boxAnchor)
-        let cat = boxAnchor.findEntity(named: "cat")
+        _ = boxAnchor.findEntity(named: "cat")
         //print("动画：\(cat?.availableAnimations[0].definition)")
 //        if #available (iOS 14.0, *) {
 //            getStepCount { stepCount in
@@ -80,9 +64,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
 //            Thread.sleep(forTimeInterval: 0.05)
 //            speechText.text = String(startStepCount)
 //        }
-        
-        //加载血条
-        //
         
         
         
@@ -108,20 +89,31 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         longPressRecognizer.minimumPressDuration = 0.5
         chatBtn.addGestureRecognizer(longPressRecognizer)
         
+        //初始化任务完成状态，数组在isTaskFinished里存着
+        InitTaskState()
+        
+        //判断今天是否更新了任务，再决定是否调用该闭包
+        GetDailyTasks("1") { tasks in
+            if let tasks = tasks {
+                dailyTasks = tasks
+            } else {print("没任务")}
+        }
+//        for task in dailyTasks{
+//            let newTask = TodayTask(taskID: task.taskID, isFinished: false)
+//            
+//        }
+        
+        
+        
     }
     
     
-    
-    
-    
-    
-    
-    var walkBtnStatusNow = walkBtnStatus.readyToStart
+    var walkBtnStatusNow = WalkBtnStatus.readyToStart
     //点击遛猫按钮发生的事件
     @IBAction func clickWalk(_ sender: Any) {
         switch walkBtnStatusNow {
         case .readyToStart:
-            walkBtnStatusNow = walkBtnStatus.readyToEnd
+            walkBtnStatusNow = WalkBtnStatus.readyToEnd
             walkBtn.setTitle("结束", for: .normal)
             if #available (iOS 14.0, *) {
                 getStepCount { stepCount in
@@ -172,7 +164,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
             })
             
         case .readyToEnd:
-            walkBtnStatusNow = walkBtnStatus.readyToStart
+            walkBtnStatusNow = WalkBtnStatus.readyToStart
             walkBtn.setTitle("遛猫", for: .normal)
             //先获取结束时的步数
             if #available (iOS 14.0, *) {
@@ -185,14 +177,19 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
                 defaults.set(endStepCount, forKey: "myData_EndStepCount")
                 speechText.text = String(endStepCount)
             }
+            let stepCountThisTime = endStepCount - startStepCount
             
-            let alertController = UIAlertController(title: "遛猫结束！", message: "起始步数：\(startStepCount)\n结束步数：\(endStepCount)\n本次步数：\(endStepCount-startStepCount)", preferredStyle: .alert)
-
+            let alertController = UIAlertController(title: "遛猫结束！", message: "起始步数：\(startStepCount)\n结束步数：\(endStepCount)\n本次步数：\(stepCountThisTime)", preferredStyle: .alert)
+            if(stepCountThisTime >= 1000){
+                SetTaskToFinish(TaskType.Walk)
+            }
+            
             let okAction = UIAlertAction(title: "好的", style: .default) { (action:UIAlertAction!) in
                 // Handle OK button tap
             }
 
             alertController.addAction(okAction)
+            
 
             // Present the alert controller
             self.present(alertController, animated: true, completion:nil)
@@ -252,7 +249,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
                 }
             }
     }
-    
     
     @IBAction func clickFeed(_ sender: Any) {
         
