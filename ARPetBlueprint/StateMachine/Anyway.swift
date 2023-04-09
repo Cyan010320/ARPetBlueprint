@@ -54,6 +54,13 @@ let FrameFor: [PetAnimation : (Double, Double)] =
         PetAnimation.向右走: (2060, 2084)
     ]
 
+let standAsStartState: [PetAnimation] = [.伸懒腰, .什么都不做, .向左看一眼, .趴下伸懒腰, .趴下, .坐下]
+let sitAsStartState: [PetAnimation] = [.坐着伸懒腰, .坐着待机起身, .坐下左右看, .坐后躺, .坐后舔手]
+let lieAsStartState: [PetAnimation] = [.趴着, .长待机起来, .躺后起身, .趴后躺]
+let standAsEndState: [PetAnimation] = [.伸懒腰, .什么都不做, .向左看一眼, .趴下伸懒腰, .长待机起来, .坐着待机起身]
+let sitAsEndState: [PetAnimation] = [.坐着伸懒腰, .坐下, .坐下左右看, .躺后起身, .坐后舔手]
+let lieAsEndState: [PetAnimation] = [.趴着, .趴下, .坐后躺, .趴后躺]
+
 
 public func getAnimationStartAndEndTime(_ animationType: PetAnimation) -> (Double, Double) {
     let frameInterval = FrameFor[animationType]
@@ -64,21 +71,3 @@ public func getAnimationStartAndEndTime(_ animationType: PetAnimation) -> (Doubl
     return (startTime, endTime)
 }
 
-
-
-extension SCNNode{
-    func switchAnimation(to petAnimation: PetAnimation){
-        //1.获取模型，暂停当前动画
-        
-        
-        
-        //2.找到新动画
-        
-        
-        //3.切换过去
-        
-    }
-    
-    
-    
-}

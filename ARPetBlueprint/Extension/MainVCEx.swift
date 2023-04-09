@@ -117,6 +117,18 @@ extension MainViewController{
            recognitionRequest.requiresOnDeviceRecognition = false
            
        }
+        
+        func findFirstMatch(in strings: [String], for text: String) -> String? {
+            for string in strings {
+                if text.contains(string) {
+                    return string
+                }
+            }
+            return nil
+        }
+        
+        let speechInstructions = ["过来", "转圈", "趴下", "坐下"]
+
         recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest) { [self]
            result, error in
            var isFinal = false
@@ -125,8 +137,42 @@ extension MainViewController{
                isFinal = result.isFinal
                print(result.bestTranscription.formattedString)
                speechText.text = result.bestTranscription.formattedString
-//               let cat = try! Experience.load(named: "cat")
-//               print(cat.availableAnimations[0].name!)
+               let text = speechText.text
+               if let matchInstruction = findFirstMatch(in: speechInstructions, for: text!) {
+                   switch matchInstruction{
+                   case speechInstructions[0]:
+                       playAnimation(petAnimation: PetAnimation.大跳)
+                   case speechInstructions[1]:
+                       stopIdleTimer()
+                       currentIdleAnimationDuration = getAnimationDuration(PetAnimation.左转180)*2
+                       idleTimer = Timer.scheduledTimer(withTimeInterval: currentIdleAnimationDuration, repeats: true) { [weak self] _ in
+                           self?.playAnimation(petAnimation: PetAnimation.左转180)
+                           self?.playAnimation(petAnimation: PetAnimation.左转180)
+                       }
+                       petCurrentState = .stand
+                       playIdleAnimation()
+                   case speechInstructions[2]:
+                       stopIdleTimer()
+                       currentIdleAnimationDuration = getAnimationDuration(PetAnimation.趴下) + getAnimationDuration(PetAnimation.长待机起来)
+                       idleTimer = Timer.scheduledTimer(withTimeInterval: currentIdleAnimationDuration, repeats: true) { [weak self] _ in
+                           self?.playAnimation(petAnimation: PetAnimation.趴下)
+                           self?.playAnimation(petAnimation: PetAnimation.长待机起来)
+                       }
+                       petCurrentState = .stand
+                       playIdleAnimation()
+                   case speechInstructions[3]:
+                       stopIdleTimer()
+                       currentIdleAnimationDuration = getAnimationDuration(PetAnimation.坐下)
+                       idleTimer = Timer.scheduledTimer(withTimeInterval: currentIdleAnimationDuration, repeats: true) { [weak self] _ in
+                           self?.playAnimation(petAnimation: PetAnimation.坐下)
+                       }
+                       petCurrentState = .sit
+                       playIdleAnimation()
+                   default:
+                       print("未匹配")
+                   }
+                   
+               }
                
                
                
@@ -580,104 +626,62 @@ extension MainViewController: AVCaptureFileOutputRecordingDelegate {
 
 
 extension MainViewController{
-    func PlayAnimationForPet(_ animationType: PetAnimation, _ mode: AnimationRepeatMode = .none, _ isNeedIdleAnimation: Bool = false) -> Void{
-        let cat = boxAnchor.findEntity(named: "cat")!.children[0]
-        let animation = cat.availableAnimations[0]
-        let animationView = AnimationView(source: animation.definition,
-                                          name: "ani",
-                                          bindTarget: nil,
-                                          blendLayer: 0,
-                                          repeatMode: mode,
-                                          fillMode: [],
-                                          trimStart: getAnimationStartAndEndTime(animationType).0,
-                                          trimEnd: getAnimationStartAndEndTime(animationType).1,
-                                          trimDuration: nil,
-                                          offset: 0,
-                                          delay: 0,
-                                          speed: 1.0)
-        let resource = try! AnimationResource.generate(with: animationView)
-        cat.playAnimation(resource, transitionDuration: 0, startsPaused: false)
-        //当宠物播放完需要播放的动画后，调整状态。
-        if isNeedIdleAnimation{
-            switch animationType{
-                
-            case .伸懒腰:
-                <#code#>
-            case .趴着:
-                <#code#>
-            case .坐着伸懒腰:
-                <#code#>
-            case .喝水:
-                <#code#>
-            case .吃东西:
-                <#code#>
-            case .什么都不做:
-                <#code#>
-            case .向左看一眼:
-                <#code#>
-            case .趴下伸懒腰:
-                <#code#>
-            case .短跳:
-                <#code#>
-            case .跳下去:
-                <#code#>
-            case .着陆:
-                <#code#>
-            case .助跑大跳:
-                <#code#>
-            case .先走后跳:
-                <#code#>
-            case .蹦高:
-                <#code#>
-            case .蹦更高:
-                <#code#>
-            case .趴下:
-                <#code#>
-            case .长待机起来:
-                <#code#>
-            case .左转180:
-                <#code#>
-            case .右转180:
-                <#code#>
-            case .左转90:
-                <#code#>
-            case .右转90:
-                <#code#>
-            case .左转45:
-                <#code#>
-            case .右转45:
-                <#code#>
-            case .大跳:
-                <#code#>
-            case .左跃:
-                <#code#>
-            case .右跃:
-                <#code#>
-            case .跳跃收尾:
-                <#code#>
-            case .坐下:
-                <#code#>
-            case .坐着待机起身:
-                <#code#>
-            case .坐下左右看:
-                <#code#>
-            case .坐后躺:
-                <#code#>
-            case .躺后起身:
-                <#code#>
-            case .坐后舔手:
-                <#code#>
-            case .趴后躺:
-                <#code#>
-            case .向左走:
-                <#code#>
-            case .向右走:
-                <#code#>
-            }
-        }
-        
+    enum PetState: Int{
+        case stand, sit, lie
     }
     
+}
+
+extension MainViewController{
+    func startIdleTimer() {
+        stopIdleTimer() // Stop the timer if it's already running
+        
+        // Start a new timer to play idle animations randomly
+        idleTimer = Timer.scheduledTimer(withTimeInterval: currentIdleAnimationDuration, repeats: true) { [weak self] _ in
+            self?.playIdleAnimation()
+        }
+    }
+
+    func stopIdleTimer() {
+        idleTimer?.invalidate()
+        idleTimer = nil
+    }
+
+    func playIdleAnimation() {
+        //1.判断当前状态
+        var nextIdleAnimation: PetAnimation
+        switch petCurrentState {
+            
+        case .stand:
+            nextIdleAnimation = standAsStartState.randomElement()!
+        case .sit:
+            nextIdleAnimation = sitAsStartState.randomElement()!
+        case .lie:
+            nextIdleAnimation = lieAsStartState.randomElement()!
+        }
+        
+        currentIdleAnimationDuration = getAnimationDuration(nextIdleAnimation)
+       
+        if standAsEndState.contains(nextIdleAnimation){
+            petCurrentState = .stand
+        }
+        else if sitAsEndState.contains(nextIdleAnimation){
+            petCurrentState = .sit
+        }
+        else if lieAsEndState.contains(nextIdleAnimation){
+            petCurrentState = .lie
+        }
+        
+        // Set a new duration for the idle timer
+        startIdleTimer()
+        playAnimation(petAnimation: nextIdleAnimation)  //这个next也包含了第一个闲置动画
+    }
+    
+    func getAnimationDuration(_ animation: PetAnimation) -> Double{
+        return getAnimationStartAndEndTime(animation).1 - getAnimationStartAndEndTime(animation).0
+        
+    }
+
     
     
     

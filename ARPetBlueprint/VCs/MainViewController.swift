@@ -35,7 +35,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
     var foods: [Food] = []
     var toys : [Toy]  = []
 
-
+    var petCurrentState: PetState = PetState.stand
     
     override func viewWillAppear(_ animated: Bool) {
         loadResource()
@@ -44,19 +44,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         
     }
 
+    var idleTimer: Timer?
+    var currentIdleAnimationDuration: TimeInterval = 0
     
     let boxAnchor = try! Experience.loadBox()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-        initUI()
-        
-        //加载AR场景
-        arView.scene.anchors.append(boxAnchor)
-        
-        
-        
+    func playAnimation(petAnimation: PetAnimation, repeatMode: AnimationRepeatMode = .none){
+        print("调用下一个闲置动画")
         let cat = boxAnchor.findEntity(named: "cat")!.children[0]
         let animation = cat.availableAnimations[0]
         let animationView = AnimationView(source: animation.definition,
@@ -65,8 +59,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
                                           blendLayer: 0,
                                           repeatMode: .none,
                                           fillMode: [],
-                                          trimStart: getAnimationStartAndEndTime(PetAnimation.大跳).0,
-                                          trimEnd: getAnimationStartAndEndTime(PetAnimation.大跳).1,
+                                          trimStart: getAnimationStartAndEndTime(petAnimation).0,
+                                          trimEnd: getAnimationStartAndEndTime(petAnimation).1,
                                           trimDuration: nil,
                                           offset: 0,
                                           delay: 0,
@@ -74,26 +68,24 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         let resource = try! AnimationResource.generate(with: animationView)
         cat.playAnimation(resource, transitionDuration: 0, startsPaused: false)
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        initUI()
         
-        //cat.playAnimation(cat.availableAnimations[0], transitionDuration: 0, startsPaused: false)
+        //加载AR场景
+        arView.scene.anchors.append(boxAnchor)
         
+        //playAnimation(petAnimation: PetAnimation.大跳)
         
+
+        //cat.playAnimation(resource, transitionDuration: 0, startsPaused: false)
         
-//        print("cat:")
-//        print(cat.availableAnimations[0].name)
-//        print("completion:")
-//        print(cat.children[0].availableAnimations[0].name) //completion
-//        print("arm_cat:")
-//        print(cat.children[0].children[0].availableAnimations[0].name) //arm_cat
-//        print("base65:")
-//        print(cat.children[0].children[0].children[0].availableAnimations[0].name) //base65
-//        print("skeleton:")
-//        print(cat.children[0].children[0].children[0].children[0].availableAnimations[0].name) //skeletion
-//        print("kitten_66")
-//        print(cat.children[0].children[0].children[0].children[0].availableAnimations[0].name) //kitten_66
-//
+        playIdleAnimation()
         
-        
+
         
         //语音识别模块
         let defaults = UserDefaults.standard
