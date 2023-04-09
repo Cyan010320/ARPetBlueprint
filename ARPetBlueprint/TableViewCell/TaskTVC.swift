@@ -29,6 +29,7 @@ class TaskTVC: UITableViewCell {
         if taskFinishBtn.titleLabel?.text == "领取"{
             //1.获得奖励，告诉服务器
             
+            
             taskFinishBtn.setTitle("已完成", for: .normal)
             taskFinishBtn.backgroundColor = .gray
             taskFinishBtn.tintColor = .blue

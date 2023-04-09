@@ -2,20 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>用你的相机呈现AR</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>健康更新</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>把你的健康信息分享给他人</string>
-	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>健康记录</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>录音，语音识别</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>语音识别^^</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -35,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

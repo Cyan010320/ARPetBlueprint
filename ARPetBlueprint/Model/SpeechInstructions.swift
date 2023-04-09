@@ -30,9 +30,3 @@ public func getAvailableInstructions(_ petID: pet) -> [String: Int] {
     return instructions
 }
 
-
-
-
-
-
-

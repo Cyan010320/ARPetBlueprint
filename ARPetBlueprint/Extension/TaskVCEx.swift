@@ -19,12 +19,12 @@ extension TaskVC{
 
         let task = dailyTasks[indexPath.row]
         let row = indexPath.row
-        if isTaskFinished[row] && isRewardReceived[row] {
+        if isTaskFinished[row] &&  isRewardReceived[row] {
             //完成且领完奖励
             cell.taskProgress.text = "进度：1/1"
             cell.taskFinishBtn.backgroundColor = .gray
             cell.taskFinishBtn.tintColor = .blue
-            cell.taskFinishBtn.titleLabel?.text = "已完成"
+            cell.taskFinishBtn.setTitle("已完成", for: .normal)
             
         }
         else if isTaskFinished[row] && !isRewardReceived[row] {
@@ -32,7 +32,7 @@ extension TaskVC{
             cell.taskProgress.text = "进度：1/1"
             cell.taskFinishBtn.backgroundColor = .blue
             cell.taskFinishBtn.tintColor = .white
-            cell.taskFinishBtn.titleLabel?.text = "领取"
+            cell.taskFinishBtn.setTitle("领取", for: .normal)
             
         }
         else{

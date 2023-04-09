@@ -11,6 +11,15 @@ import UIKit
 
 class PostTVC: UITableViewCell {
 
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var titleView: UITextView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var postImg1: UIImageView!
+    @IBOutlet weak var postImg2: UIImageView!
+    @IBOutlet weak var postImg3: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

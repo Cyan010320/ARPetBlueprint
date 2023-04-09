@@ -41,7 +41,7 @@
                                           "reversed" : false,
                                           "reverses" : false,
                                           "target" : [
-                                            "C179521C-0296-4881-B027-537E94CEE8BB"
+                                            "122EE1DC-8076-442C-A5AF-25B0FFF07DE9"
                                           ]
                                         },
                                         "name" : {
@@ -80,7 +80,7 @@
                               "configurationBox" : {
                                 "configuration" : {
                                   "target" : [
-                                    "C179521C-0296-4881-B027-537E94CEE8BB"
+                                    "122EE1DC-8076-442C-A5AF-25B0FFF07DE9"
                                   ]
                                 },
                                 "name" : "tapTarget"
@@ -122,26 +122,26 @@
                                           "clipDuration" : 0,
                                           "clipStart" : 0,
                                           "iterations" : 1,
-                                          "multiplePerformType" : "allow request",
+                                          "multiplePerformType" : "ignore request",
                                           "muteAudio" : false,
                                           "reversed" : false,
                                           "reverses" : false,
                                           "target" : [
-                                            "C179521C-0296-4881-B027-537E94CEE8BB"
+                                            "122EE1DC-8076-442C-A5AF-25B0FFF07DE9"
                                           ]
                                         },
                                         "name" : {
                                           "type" : "startAnimate"
                                         }
                                       },
-                                      "identifier" : "321222C3-4039-45D9-A1A9-C19AF0F2E558",
+                                      "identifier" : "44FF3F06-B1BA-4D96-A450-968BA0FFB305",
                                       "isEnabled" : true
                                     }
                                   ],
                                   "__version" : 1
                                 }
                               ],
-                              "identifier" : "B5405739-9B79-4455-8A1E-F1A4101BC0E4",
+                              "identifier" : "A569BC88-A55C-47C9-B30F-3DC7975198F3",
                               "isEnabled" : true
                             }
                           ],
@@ -154,7 +154,7 @@
                         0.80000001192092896,
                         1
                       ],
-                      "identifier" : "ADA92739-4FCD-4E1D-AA4D-76F98146526B",
+                      "identifier" : "516575B9-F5B4-43E0-A90D-00D823CA89F2",
                       "isEnabled" : true,
                       "isLooping" : false,
                       "isModal" : false,
@@ -165,11 +165,11 @@
                             {
                               "configurationBox" : {
                                 "configuration" : {
-
+                                  "userIdentifier" : "behavior"
                                 },
-                                "name" : "start"
+                                "name" : "custom"
                               },
-                              "identifier" : "8856C8BB-36F2-4878-A01F-6757B99005CB",
+                              "identifier" : "0C5022A1-E3EA-4A6A-9122-8D8B6BC6FC12",
                               "isEnabled" : true
                             }
                           ],
@@ -192,9 +192,7 @@
                 "children" : {
                   "4A213441-135C-450E-8EF8-1A4EAB267C1D" : null,
                   "7F5F1ADC-E5E4-4EF5-A5B5-FC43B071FFA5" : null,
-                  "632E476F-1E55-4E30-9723-1C51DD2E8B89" : null,
-                  "B91C7CA3-4AB1-4253-9A84-07383168A8A8" : null,
-                  "ED1D5002-15F0-4307-884A-64642E2A8DBB" : {
+                  "58B32579-D3A7-4528-AD58-5D469D99B614" : {
                     "overrides" : {
                       "children" : {
                         "USDScene" : {
@@ -218,7 +216,7 @@
                                 "url",
                                 {
                                   "typeName" : "String",
-                                  "value" : "model:6526f7b805572a256a90f68d9c503d80\/jump_cat.usdz"
+                                  "value" : "model:7f7158dbae8f34537a589a405319c2e6\/completion.usdz"
                                 }
                               ],
                               [
@@ -238,7 +236,7 @@
                                 "RuntimeIdentifier",
                                 {
                                   "typeName" : "UUID",
-                                  "value" : "7065DD3F-7098-4BBD-9763-5F7B52EC356E"
+                                  "value" : "E00EBAAF-5548-4492-A1C0-4093FF488556"
                                 }
                               ]
                             ]
@@ -274,7 +272,7 @@
                           "RuntimeIdentifier",
                           {
                             "typeName" : "UUID",
-                            "value" : "C179521C-0296-4881-B027-537E94CEE8BB"
+                            "value" : "122EE1DC-8076-442C-A5AF-25B0FFF07DE9"
                           }
                         ],
                         [
@@ -283,22 +281,29 @@
                             "typeName" : "String",
                             "value" : "cat"
                           }
+                        ],
+                        [
+                          "isAccessibilityEnabled",
+                          {
+                            "typeName" : "Bool",
+                            "value" : false
+                          }
                         ]
                       ]
                     },
                     "transform" : {
                       "matrix" : [
-                        0.86602538824081421,
+                        1,
                         0,
-                        -0.50000005960464478,
+                        0,
                         0,
                         0,
                         1,
                         0,
                         0,
-                        0.5,
                         0,
-                        0.86602532863616943,
+                        0,
+                        1,
                         0,
                         0,
                         0.00021625305816996843,
@@ -306,7 +311,10 @@
                         1
                       ]
                     }
-                  }
+                  },
+                  "632E476F-1E55-4E30-9723-1C51DD2E8B89" : null,
+                  "B91C7CA3-4AB1-4253-9A84-07383168A8A8" : null,
+                  "ED1D5002-15F0-4307-884A-64642E2A8DBB" : null
                 },
                 "factory" : null,
                 "runtimeAttributes" : [

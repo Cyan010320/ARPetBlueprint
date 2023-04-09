@@ -13,6 +13,9 @@ struct Task: Codable {
     let taskDescription: String
     let taskAward: String?
     let petID: String
+    let foodOrToy: String
+    let awardID: String
+    let awardAmount: String
 }
 
 struct TodayTask {

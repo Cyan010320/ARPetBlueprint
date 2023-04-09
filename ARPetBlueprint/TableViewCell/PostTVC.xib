@@ -44,16 +44,16 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="fHh-Nz-Nh3">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="fHh-Nz-Nh3">
                         <rect key="frame" x="20" y="176" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="xMu-a8-7DK">
-                        <rect key="frame" x="308" y="176" width="100" height="100"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="kFj-Mx-lUD">
+                        <rect key="frame" x="164" y="176" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="kFj-Mx-lUD">
-                        <rect key="frame" x="164" y="176" width="100" height="100"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="xMu-a8-7DK">
+                        <rect key="frame" x="308" y="176" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
@@ -62,6 +62,15 @@
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
             </accessibility>
+            <connections>
+                <outlet property="postImg1" destination="fHh-Nz-Nh3" id="ZZQ-ul-gZl"/>
+                <outlet property="postImg2" destination="kFj-Mx-lUD" id="k8y-Dp-QPu"/>
+                <outlet property="postImg3" destination="xMu-a8-7DK" id="ocr-Cg-uj4"/>
+                <outlet property="textView" destination="tmm-GE-fZe" id="Mo0-tj-WAc"/>
+                <outlet property="titleView" destination="8Re-mv-7lp" id="QIL-XN-fwJ"/>
+                <outlet property="userImage" destination="Edz-55-DLK" id="YXt-OI-MW4"/>
+                <outlet property="userName" destination="r5H-oo-hY2" id="9Wn-XU-SE1"/>
+            </connections>
             <point key="canvasLocation" x="148.09160305343511" y="111.26760563380282"/>
         </tableViewCell>
     </objects>

@@ -27,6 +27,11 @@
 		8755F08829C4141A0068E700 /* FoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */; };
 		878D3EA629D8211B00D9A7FA /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EA529D8211B00D9A7FA /* global.swift */; };
 		878D3EA829D822B900D9A7FA /* TaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EA729D822B900D9A7FA /* TaskType.swift */; };
+		878D3EAA29D9704900D9A7FA /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EA929D9704900D9A7FA /* UIViewEx.swift */; };
+		878D3EAC29D9B09000D9A7FA /* activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EAB29D9B09000D9A7FA /* activity.swift */; };
+		878D3EAE29DB0E2600D9A7FA /* Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EAD29DB0E2600D9A7FA /* Toy.swift */; };
+		878D3EB129DBA9C100D9A7FA /* ToyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D3EAF29DBA9C100D9A7FA /* ToyCollectionViewCell.swift */; };
+		878D3EB229DBA9C100D9A7FA /* ToyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878D3EB029DBA9C100D9A7FA /* ToyCollectionViewCell.xib */; };
 		87A3301B29B9788B00ED087A /* MainVCEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3301A29B9788B00ED087A /* MainVCEx.swift */; };
 		87A3301F29B97A0700ED087A /* TypeNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3301E29B97A0700ED087A /* TypeNameVC.swift */; };
 		87A3302129B9912200ED087A /* TypeNameEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A3302029B9912200ED087A /* TypeNameEx.swift */; };
@@ -69,6 +74,11 @@
 		8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCollectionViewCell.xib; sourceTree = "<group>"; };
 		878D3EA529D8211B00D9A7FA /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		878D3EA729D822B900D9A7FA /* TaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskType.swift; sourceTree = "<group>"; };
+		878D3EA929D9704900D9A7FA /* UIViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
+		878D3EAB29D9B09000D9A7FA /* activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activity.swift; sourceTree = "<group>"; };
+		878D3EAD29DB0E2600D9A7FA /* Toy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy.swift; sourceTree = "<group>"; };
+		878D3EAF29DBA9C100D9A7FA /* ToyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToyCollectionViewCell.swift; sourceTree = "<group>"; };
+		878D3EB029DBA9C100D9A7FA /* ToyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToyCollectionViewCell.xib; sourceTree = "<group>"; };
 		87A3301A29B9788B00ED087A /* MainVCEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCEx.swift; sourceTree = "<group>"; };
 		87A3301E29B97A0700ED087A /* TypeNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameVC.swift; sourceTree = "<group>"; };
 		87A3302029B9912200ED087A /* TypeNameEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameEx.swift; sourceTree = "<group>"; };
@@ -172,6 +182,8 @@
 				871C03C129BD564600DE36D4 /* SpeechInstructions.swift */,
 				871C03CA29BD5BCC00DE36D4 /* Post.swift */,
 				87A8F6AD29C553CE00AC535C /* Food.swift */,
+				878D3EAB29D9B09000D9A7FA /* activity.swift */,
+				878D3EAD29DB0E2600D9A7FA /* Toy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +238,7 @@
 				87A3302E29B9EB6200ED087A /* navCEx.swift */,
 				87A3303529BAEA7C00ED087A /* TaskVCEx.swift */,
 				871C03CC29BD5D0200DE36D4 /* ForumVCEx.swift */,
+				878D3EA929D9704900D9A7FA /* UIViewEx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -239,6 +252,8 @@
 				871C03C729BD5A2900DE36D4 /* PostTVC.xib */,
 				8755F08529C4141A0068E700 /* FoodCollectionViewCell.swift */,
 				8755F08629C4141A0068E700 /* FoodCollectionViewCell.xib */,
+				878D3EAF29DBA9C100D9A7FA /* ToyCollectionViewCell.swift */,
+				878D3EB029DBA9C100D9A7FA /* ToyCollectionViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -319,6 +334,7 @@
 				870927BE29B8C41C00C2CA15 /* LaunchScreen.storyboard in Resources */,
 				870927BB29B8C41C00C2CA15 /* Assets.xcassets in Resources */,
 				870927B929B8C41700C2CA15 /* Main.storyboard in Resources */,
+				878D3EB229DBA9C100D9A7FA /* ToyCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878D3EAE29DB0E2600D9A7FA /* Toy.swift in Sources */,
 				878D3EA829D822B900D9A7FA /* TaskType.swift in Sources */,
 				878D3EA629D8211B00D9A7FA /* global.swift in Sources */,
 				87A3302B29B9E7EE00ED087A /* SendPostVC.swift in Sources */,
@@ -340,9 +357,11 @@
 				87A3301F29B97A0700ED087A /* TypeNameVC.swift in Sources */,
 				870927CA29B974C900C2CA15 /* Task.swift in Sources */,
 				87A3302929B9E7D400ED087A /* ForumVC.swift in Sources */,
+				878D3EAA29D9704900D9A7FA /* UIViewEx.swift in Sources */,
 				87A8F6AE29C553CE00AC535C /* Food.swift in Sources */,
 				87A3302729B9E78E00ED087A /* TaskVC.swift in Sources */,
 				8755F08729C4141A0068E700 /* FoodCollectionViewCell.swift in Sources */,
+				878D3EB129DBA9C100D9A7FA /* ToyCollectionViewCell.swift in Sources */,
 				871C03CD29BD5D0200DE36D4 /* ForumVCEx.swift in Sources */,
 				87A3303329B9F57A00ED087A /* TaskTVC.swift in Sources */,
 				87A3302F29B9EB6200ED087A /* navCEx.swift in Sources */,
@@ -355,6 +374,7 @@
 				87A3302129B9912200ED087A /* TypeNameEx.swift in Sources */,
 				871C03C229BD564600DE36D4 /* SpeechInstructions.swift in Sources */,
 				87A3302329B9931200ED087A /* SelectPetVC.swift in Sources */,
+				878D3EAC29D9B09000D9A7FA /* activity.swift in Sources */,
 				870927B429B8C41700C2CA15 /* SceneDelegate.swift in Sources */,
 				87A3302D29B9E8C900ED087A /* navC.swift in Sources */,
 				87A3303829BC207400ED087A /* HKModel.swift in Sources */,
@@ -508,6 +528,13 @@
 				DEVELOPMENT_TEAM = F4W9ML742T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ARPetBlueprint/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "用你的相机呈现AR";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "健康记录";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "把你的健康信息分享给他人";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "健康更新";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "录音，语音识别";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请求加入图库";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "语音识别^^";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -519,7 +546,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CyanZhang.ARPetBlueprint;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SiyuanZhang.ARPetBlueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -538,6 +565,13 @@
 				DEVELOPMENT_TEAM = F4W9ML742T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ARPetBlueprint/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "用你的相机呈现AR";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "健康记录";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "把你的健康信息分享给他人";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "健康更新";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "录音，语音识别";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请求加入图库";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "语音识别^^";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -549,7 +583,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CyanZhang.ARPetBlueprint;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SiyuanZhang.ARPetBlueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

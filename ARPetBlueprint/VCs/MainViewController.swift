@@ -11,9 +11,9 @@ import RealityKit
 import AVFoundation
 import Speech
 import Alamofire
+import Photos
 
-class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeechRecognizerDelegate, UIScrollViewDelegate, FeedCellDelegate {
-
+class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeechRecognizerDelegate, UIScrollViewDelegate, FeedCellDelegate, ToyCellDelegate {
     
     var foodValue:  Float = 0
     var happyValue: Float = 0
@@ -33,18 +33,19 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
     
     //喂食变量
     var foods: [Food] = []
-    
-    
-    
+    var toys : [Toy]  = []
+
+
     
     override func viewWillAppear(_ animated: Bool) {
         loadResource()
         //关闭了文本栏
-        //speechText.isHidden = true
+        speechText.isHidden = true
         
     }
 
-
+    
+    let boxAnchor = try! Experience.loadBox()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,18 +53,45 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         initUI()
         
         //加载AR场景
-        let boxAnchor = try! Experience.loadBox()
         arView.scene.anchors.append(boxAnchor)
-        _ = boxAnchor.findEntity(named: "cat")
-        //print("动画：\(cat?.availableAnimations[0].definition)")
-//        if #available (iOS 14.0, *) {
-//            getStepCount { stepCount in
-//                // use the step count value here
-//                self.startStepCount = stepCount
-//            }
-//            Thread.sleep(forTimeInterval: 0.05)
-//            speechText.text = String(startStepCount)
-//        }
+        
+        
+        
+        let cat = boxAnchor.findEntity(named: "cat")!.children[0]
+        let animation = cat.availableAnimations[0]
+        let animationView = AnimationView(source: animation.definition,
+                                          name: "ani",
+                                          bindTarget: nil,
+                                          blendLayer: 0,
+                                          repeatMode: .none,
+                                          fillMode: [],
+                                          trimStart: getAnimationStartAndEndTime(PetAnimation.大跳).0,
+                                          trimEnd: getAnimationStartAndEndTime(PetAnimation.大跳).1,
+                                          trimDuration: nil,
+                                          offset: 0,
+                                          delay: 0,
+                                          speed: 1.0)
+        let resource = try! AnimationResource.generate(with: animationView)
+        cat.playAnimation(resource, transitionDuration: 0, startsPaused: false)
+        
+        
+        //cat.playAnimation(cat.availableAnimations[0], transitionDuration: 0, startsPaused: false)
+        
+        
+        
+//        print("cat:")
+//        print(cat.availableAnimations[0].name)
+//        print("completion:")
+//        print(cat.children[0].availableAnimations[0].name) //completion
+//        print("arm_cat:")
+//        print(cat.children[0].children[0].availableAnimations[0].name) //arm_cat
+//        print("base65:")
+//        print(cat.children[0].children[0].children[0].availableAnimations[0].name) //base65
+//        print("skeleton:")
+//        print(cat.children[0].children[0].children[0].children[0].availableAnimations[0].name) //skeletion
+//        print("kitten_66")
+//        print(cat.children[0].children[0].children[0].children[0].availableAnimations[0].name) //kitten_66
+//
         
         
         
@@ -71,6 +99,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         let defaults = UserDefaults.standard
         defaults.set("zh-CN", forKey: "myData_Locale")
         speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: defaults.object(forKey: "myData_Locale") as! String))!
+        
+        //屏幕录制模块
+        setupCaptureSession()
+        setupPreviewLayer()
         
         
         //添加左划效果
@@ -124,16 +156,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
                 let defaults = UserDefaults.standard
                 defaults.set(startStepCount, forKey: "myData_StartStepCount")
                 speechText.text = String(startStepCount)
-//                getStepCount { stepCount in
-//                    // use the step count value here
-//                    self.startStepCount = stepCount
-//
-//                    DispatchQueue.main.async {
-//                        let defaults = UserDefaults.standard
-//                        defaults.set(self.startStepCount, forKey: "startStepCount")
-//                        self.speechText.text = String(self.startStepCount)
-//                    }
-//                }
 
             }
             let warningLabel: UILabel = {
@@ -212,45 +234,43 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         //将本次喂食后的所有物品数量发送到服务器
         var sendR: [UserFoodUpdate] = []
         for food in MainViewController.userFoods{
-            let change = UserFoodUpdate(userID: "1", foodID: food.foodID, foodAmount: Int(food.foodAmount)!)
-            print(change)
-            print("\n")
-            sendR.append(change)
+            let foodAfterChange = UserFoodUpdate(userID: "1", foodID: food.foodID, foodAmount: Int(food.foodAmount)!)
+            sendR.append(foodAfterChange)
         }
         
-        let url = "http://123.249.97.150:8008/update_user_food.php"
-        
-        // Encode the sendR array as JSON data
+        let url = URL(string: "http://123.249.97.150:8008/updateFoodAmount.php")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
         let jsonData = try! JSONEncoder().encode(sendR)
+        request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "Unknown error")
+                return
+            }
+            do {
+                let result = try JSONDecoder().decode([UserFoodUpdate].self, from: data)
+                print("输出json：\(result)")
+                for foodUpdate in result {
+                    if let index = MainViewController.userFoods.firstIndex(where: { $0.foodID == foodUpdate.foodID }) {
+                        MainViewController.userFoods[index].foodAmount = String(foodUpdate.foodAmount)
+                    }
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
         
-        // Set the HTTP headers and request parameters
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json"
-        ]
-        let parameters: Parameters = [
-            "updates": jsonData
-        ]
         
         
         // Send the POST request using Alamofire
-        AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers)
-            .validate()
-            .responseJSON { response in
-                
-                //print(parameters)
-                switch response.result {
-                case .success(let value):
-                    // Handle success response
-                    print("Response: \(value)")
-                case .failure(let error):
-                    // Handle error response
-                    print("更新失败！")
-                    
-                }
-            }
+        
+
     }
     
-    @IBAction func clickFeed(_ sender: Any) {
+    @IBAction func clickFeed(_ sender: UIButton) {
         
         UIView.animate(withDuration: 0.3, animations: {
             for button in self.getBottomButtons(){
@@ -290,11 +310,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
         })
         
         //从哪获取用户id
-        openBag(userID: "1")
-        
+        if sender == feedBtn        {openBag(userID: "1", for: OpenType.foodBag)}
+        else if sender == teaseBtn  {openBag(userID: "1", for: OpenType.toyBag)}
         
         
     }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -325,6 +346,108 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, SFSpeec
     @IBOutlet var bagView: UIScrollView!
     
     @IBOutlet weak var closeBagBtn: UIButton!
+    
+    
+    @IBOutlet weak var switchPhotoVideoBtn: UIButton!
+    
+    @IBOutlet weak var takePhotoBtn: UIButton!
+    
+    @IBOutlet weak var switchCameraBtn: UIButton!
+    
+    @IBAction func switchPhotoAndVideo(_ sender: Any) {
+        
+        if isCameraNow{
+            switchPhotoVideoBtn.setImage(UIImage(systemName: "camera"), for: .normal)
+            takePhotoBtn.setImage(UIImage(systemName: "video.circle"), for: .normal)
+        }
+        else{
+            switchPhotoVideoBtn.setImage(UIImage(systemName: "video"), for: .normal)
+            takePhotoBtn.setImage(UIImage(systemName: "camera.circle"), for: .normal)
+
+        }
+        //按下拍照按钮时再判断照相/录像即可，但切换镜头则需要立刻。
+        isCameraNow.toggle()
+    }
+    
+    @IBAction func switchLen(_ sender: Any) {
+        var config = arView.session.configuration
+        switch config {
+        case is ARWorldTrackingConfiguration:
+            config = ARFaceTrackingConfiguration()
+        case is ARFaceTrackingConfiguration:
+            config = ARWorldTrackingConfiguration()
+        case .none:
+            config = ARWorldTrackingConfiguration()
+        case .some(_):
+            config = ARWorldTrackingConfiguration()
+        }
+        arView.session.run(config!)
+    }
+    
+    
+    
+    //let photoOutput = AVCapturePhotoOutput()
+    let videoOutput = AVCaptureMovieFileOutput()
+    
+    var captureSession: AVCaptureSession!
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    var isRecordingVideo = false
+    var outputFileURL: URL?
+    // Create a capture session
+    var isRecording: Bool = false
+    @IBAction func takePhoto(_ sender: Any) {
+        if isCameraNow{
+            arView.snapshot(saveToHDR: false) { image in
+                let imageView = UIImageView()
+                imageView.image = image
+                imageView.contentMode = .scaleAspectFit
+                imageView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
+                // set the frame of the image view to whatever size you want
+                self.view.addSubview(imageView)
+                self.arView.session.pause()
+                let shareItems: [Any] = [image!]
+                let activityController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+                activityController.excludedActivityTypes = [
+                    UIActivity.ActivityType.airDrop,
+                    UIActivity.ActivityType.copyToPasteboard,
+                    UIActivity.ActivityType.message,
+                    UIActivity.ActivityType.postToWeibo,
+                    UIActivity.ActivityType.saveToCameraRoll]
+                self.present(activityController, animated: true){
+                    //self.arView.session.run(ARWorldTrackingConfiguration())
+                    activityController.completionWithItemsHandler = { activityType, completed, returnedItems, error in
+                        // This block will be called when the activity controller is dismissed
+                        // Do your work here
+                        self.arView.session.run(ARWorldTrackingConfiguration())
+                        imageView.removeFromSuperview()
+                    }
+                    
+                }
+                
+            }
+            
+            SetTaskToFinish(TaskType.Shot)
+        }
+        
+        else{
+            if !isRecordingVideo {
+                let outputPath = NSTemporaryDirectory() + "output.mov"
+                outputFileURL = URL(fileURLWithPath: outputPath)
+                videoOutput.startRecording(to: outputFileURL!, recordingDelegate: self)
+                isRecording = true
+            } else {
+                videoOutput.stopRecording()
+                isRecording = false
+            }
+        }
+    }
+    
+    @IBAction func openForum(_ sender: Any) {
+        
+        
+        
+    }
+    
     
 }
 
